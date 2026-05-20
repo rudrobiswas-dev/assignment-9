@@ -1,65 +1,1023 @@
-import Image from "next/image";
+// export default function HomePage() {
+//   return (
+//     <div>
+//       {/* Hero */}
+//       <div className="hero min-h-[80vh] bg-base-200">
+//         <div className="hero-content text-center">
+//           <div>
+//             <h1 className="text-5xl font-bold">
+//               Book Expert Tutors Easily
+//             </h1>
 
-export default function Home() {
+//             <p className="py-6 max-w-xl">
+//               Find tutors based on subjects and schedule
+//               online learning sessions smoothly.
+//             </p>
+
+//             <button className="btn btn-primary">
+//               Explore Tutors
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Tutors Section */}
+//       <section className="py-16 px-5">
+//         <h2 className="text-4xl font-bold text-center mb-10">
+//           Available Tutors
+//         </h2>
+
+//         <div className="grid md:grid-cols-3 gap-6">
+//           {[1,2,3,4,5,6].map((item) => (
+//             <div
+//               key={item}
+//               className="card bg-base-100 shadow-xl"
+//             >
+//               <figure>
+//                 <img
+//                   src="https://i.ibb.co.com/x7P24fL/teacher.jpg"
+//                   alt="Tutor"
+//                   className="h-60 w-full object-cover"
+//                 />
+//               </figure>
+
+//               <div className="card-body">
+//                 <h2 className="card-title">
+//                   John Doe
+//                 </h2>
+
+//                 <p>Mathematics Expert</p>
+
+//                 <p>$20/hour</p>
+
+//                 <button className="btn btn-primary">
+//                   Book Session
+//                 </button>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </section>
+//     </div>
+//   );
+// }
+
+
+import Image from "next/image";
+import tutors from "@/data/tutors.json";
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <div>
+      <section
+  className="
+    relative overflow-hidden
+    bg-base-100
+    min-h-screen
+    flex items-center
+    py-20
+    px-4 sm:px-6 lg:px-10 xl:px-20
+    transition-colors duration-500
+  "
+>
+  {/* Background */}
+  <div className="absolute inset-0 overflow-hidden">
+
+    {/* Glow 1 */}
+    <div
+      className="
+        absolute top-10 left-10
+        w-72 h-72
+        bg-primary/20
+        rounded-full
+        blur-3xl
+        animate-pulse
+      "
+    ></div>
+
+    {/* Glow 2 */}
+    <div
+      className="
+        absolute bottom-10 right-10
+        w-100 h-100
+        bg-secondary/20
+        rounded-full
+        blur-3xl
+        animate-pulse
+      "
+    ></div>
+
+    {/* Glow 3 */}
+    <div
+      className="
+        absolute top-1/2 left-1/2
+        w-125 h-125
+        bg-accent/10
+        rounded-full
+        blur-3xl
+        -translate-x-1/2
+        -translate-y-1/2
+        animate-spin
+        [animation-duration:20s]
+      "
+    ></div>
+
+    {/* Grid */}
+    <div className="absolute inset-0 opacity-10">
+      <div
+        className="h-full w-full"
+        style={{
+          backgroundImage: `
+            linear-linear(rgba(255,255,255,0.1) 1px, transparent 1px),
+            linear-linear(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: "50px 50px",
+        }}
+      />
+    </div>
+  </div>
+
+  {/* Main Content */}
+  <div
+    className="
+      relative z-10
+      w-full
+      max-w-7xl
+      mx-auto
+
+      flex
+      flex-col-reverse
+      lg:flex-row
+
+      items-center
+      justify-between
+
+      gap-16 lg:gap-24
+    "
+  >
+
+    {/* LEFT TEXT */}
+    <div
+      className="
+        flex-1
+        max-w-2xl
+        text-center
+        lg:text-left
+      "
+    >
+
+      {/* Badge */}
+      <div
+        className="
+          inline-flex
+          items-center
+          gap-2
+
+          px-5 py-2.5
+          rounded-full
+
+          bg-base-200/60
+          backdrop-blur-md
+
+          border border-base-300
+
+          text-base-content/70
+          font-medium
+
+          mb-7
+
+          animate-pulse
+        "
+      >
+        🚀 Best Online Learning Platform
+      </div>
+
+      {/* Heading */}
+      <h1
+        className="
+          text-4xl
+          sm:text-5xl
+          md:text-6xl
+          xl:text-7xl
+
+          font-black
+          leading-tight
+
+          text-base-content
+        "
+      >
+        Find Your
+
+        <span
+          className="
+            bg-linear-to-r
+            from-primary
+            via-secondary
+            to-accent
+
+            bg-clip-text
+            text-transparent
+
+            animate-pulse
+          "
+        >
+          {" "}Perfect Tutor
+        </span>
+      </h1>
+
+      {/* Description */}
+      <p
+        className="
+          mt-7
+          text-base
+          sm:text-lg
+
+          leading-relaxed
+
+          text-base-content/70
+
+          max-w-xl
+
+          mx-auto
+          lg:mx-0
+        "
+      >
+        Learn faster with expert tutors from around the world.
+        Book sessions instantly and improve your skills with
+        modern interactive learning experiences.
+      </p>
+
+      {/* Buttons */}
+      <div
+        className="
+          mt-10
+
+          flex
+          flex-col
+          sm:flex-row
+
+          items-center
+          lg:items-start
+
+          gap-5
+        "
+      >
+
+        {/* Primary Button */}
+        <button
+          className="
+            relative
+            overflow-hidden
+
+            px-8 py-4
+
+            rounded-2xl
+
+            bg-primary
+            text-primary-content
+
+            font-bold
+
+            shadow-2xl
+
+            hover:scale-105
+            transition-all
+            duration-300
+
+            group
+          "
+        >
+
+          {/* Shine */}
+          <span
+            className="
+              absolute inset-0
+              bg-white/20
+
+              translate-x-full
+              group-hover:translate-x-full
+
+              transition-transform
+              duration-1000
+            "
+          ></span>
+
+          <span
+            className="
+              relative z-10
+
+              flex items-center gap-2
+            "
+          >
+            Explore Tutors
+
+            <span
+              className="
+                group-hover:translate-x-1
+                transition-transform
+              "
+            >
+              →
+            </span>
+          </span>
+        </button>
+
+        {/* Secondary Button */}
+        <button
+          className="
+            px-8 py-4
+
+            rounded-2xl
+
+            border border-base-300
+
+            text-base-content
+
+            hover:bg-base-200
+
+            hover:scale-105
+
+            transition-all
+            duration-300
+          "
+        >
+          Watch
+        </button>
+      </div>
+    </div>
+
+    {/* RIGHT IMAGE */}
+    <div
+      className="
+        flex-1
+
+        relative
+
+        flex
+        justify-center
+        items-center
+      "
+    >
+
+      {/* Glow Border */}
+      <div
+        className="
+          absolute
+          -inset-4
+
+          rounded-[40px]
+
+          bg-linear-to-r
+          from-primary
+          via-secondary
+          to-accent
+
+          blur-2xl
+          opacity-60
+
+          animate-pulse
+        "
+      ></div>
+
+      {/* Image */}
+      <div className="relative group">
+
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src="/images/my-photos.png"
+          alt="Hero Image"
+          width={500}
+          height={500}
           priority
+          className="
+            relative z-10
+
+            w-70
+            sm:w-87.5
+            md:w-105
+            lg:w-117.5
+
+            h-auto
+
+            rounded-[35px]
+
+            object-cover
+
+            border border-base-300
+
+            shadow-2xl
+
+            group-hover:scale-105
+            group-hover:-rotate-1
+
+            transition-all
+            duration-500
+          "
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+        {/* Floating Card */}
+        <div
+          className="
+            absolute
+
+            -bottom-5
+            left-1/2
+            -translate-x-1/2
+
+            lg:left-0
+            lg:translate-x-0
+
+            bg-base-200/70
+            backdrop-blur-xl
+
+            border border-base-300
+
+            px-5 py-4
+
+            rounded-2xl
+
+            shadow-2xl
+
+            animate-bounce
+          "
+        >
+          <h3
+            className="
+              text-base-content
+              font-black
+              text-lg
+            "
+          >
+            500+ Tutors
+          </h3>
+
+          <p
+            className="
+              text-base-content/70
+              text-sm
+            "
+          >
+            Trusted worldwide
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </div>
+    </div>
+  </div>
+      </section>
+
+      <section className="relative py-24 px-5 overflow-hidden bg-base-100 transition-colors duration-500">
+    {/* Animated Background */}
+    <div className="absolute inset-0">
+
+      {/* Glow Effects */}
+      <div className="
+        absolute top-0 left-0
+        w-96 h-96
+        bg-primary/20
+        rounded-full
+        blur-3xl
+        animate-pulse
+      "></div>
+
+      <div className="
+        absolute bottom-0 right-0
+        w-125 h-125
+        bg-secondary/10
+        rounded-full
+        blur-3xl
+        animate-pulse
+        delay-1000
+      "></div>
+
+      <div className="
+        absolute top-1/2 left-1/2
+        w-100 h-100
+        bg-accent/10
+        rounded-full
+        blur-3xl
+        animate-bounce
+      "></div>
+
+      {/* Grid Effect */}
+      <div
+        className="
+          absolute inset-0 opacity-10
+          bg-[linear-linear(rgba(255,255,255,0.08)_1px,transparent_1px),
+          linear-linear(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)]
+          bg-size-[50px_50px]
+        "
+      ></div>
+
+      {/* Overlay */}
+      <div className="
+        absolute inset-0
+        bg-linear-to-b
+        from-base-100
+        via-base-200/40
+        to-base-100
+      "></div>
+    </div>
+
+    {/* Content */}
+    <div className="relative z-10 max-w-7xl mx-auto">
+
+      {/* Heading */}
+      <div className="text-center mb-16">
+
+        <h2
+          className="
+            text-4xl sm:text-5xl md:text-6xl
+            font-black
+            bg-linear-to-r
+            from-base-content
+            via-base-content/70
+            to-primary
+            bg-clip-text
+            text-transparent
+          "
+        >
+          Available Tutors
+        </h2>
+
+        <p className="text-base-content/70 mt-4 text-lg">
+          Learn from professional tutors
+        </p>
+      </div>
+
+      {/* Cards */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+        {tutors.map((tutor) => (
+          <div
+            key={tutor.id}
+            className="
+              group
+              relative
+              overflow-hidden
+              rounded-3xl
+              bg-linear-to-b
+              from-base-200
+              via-base-100
+              to-base-200
+              border border-base-300
+              shadow-2xl
+              hover:border-primary/50
+              transition-all
+              duration-500
+              hover:-translate-y-4
+              hover:scale-[1.02]
+              backdrop-blur-xl
+            "
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+            {/* Animated Glow Border */}
+            <div className="
+              absolute inset-0 opacity-0
+              group-hover:opacity-100
+              transition duration-500
+            ">
+              <div className="
+                absolute -inset-0.5
+                bg-linear-to-r
+                from-primary
+                via-secondary
+                to-accent
+                blur-xl
+                opacity-30
+                animate-pulse
+              "></div>
+            </div>
+
+            {/* Top Shine */}
+            <div className="
+              absolute top-0 left-full
+              w-full h-0.5
+              bg-linear-to-r
+              from-transparent
+              via-white
+              to-transparent
+              group-hover:left-full
+              transition-all
+              duration-1000
+            "></div>
+
+            {/* Image */}
+            <figure className="relative h-96 w-full overflow-hidden">
+
+              <Image
+                src={tutor.image}
+                alt={tutor.name}
+                fill
+                className="
+                  object-cover
+                  transition-transform
+                  duration-700
+                  group-hover:scale-110
+                  group-hover:rotate-1
+                "
+              />
+
+              {/* Overlay */}
+              <div className="
+                absolute inset-0
+                bg-black/20
+                group-hover:bg-black/40
+                transition duration-500
+              "></div>
+
+              {/* Floating Subject Badge */}
+              <div className="
+                absolute top-4 left-4
+                px-4 py-2
+                rounded-full
+                bg-base-100/70
+                backdrop-blur-md
+                border border-base-300
+                text-base-content
+                font-semibold
+                text-sm
+                shadow-lg
+              ">
+                {tutor.subject}
+              </div>
+            </figure>
+
+            {/* Body */}
+            <div className="card-body relative z-10">
+
+              {/* Name */}
+              <h2 className="
+                card-title
+                text-2xl
+                font-black
+                text-base-content
+                group-hover:text-primary
+                transition
+              ">
+                {tutor.name}
+              </h2>
+
+              {/* Description */}
+              <p className="text-base-content/70 leading-relaxed">
+                Expert tutor helping students improve skills with
+                modern learning techniques.
+              </p>
+
+              {/* Price */}
+              <div className="flex items-center justify-between mt-3">
+
+                <p className="
+                  text-3xl
+                  font-black
+                  text-primary
+                ">
+                  {tutor.price}
+                </p>
+
+                <div className="
+                  px-3 py-1
+                  rounded-full
+                  bg-success/20
+                  text-success
+                  text-sm
+                  font-bold
+                  border border-success/20
+                ">
+                  Available
+                </div>
+              </div>
+
+              {/* Button */}
+              <button
+                className="
+                  relative
+                  overflow-hidden
+                  mt-6
+                  py-3.5
+                  rounded-2xl
+                  font-bold
+                  text-primary-content
+                  bg-linear-to-r
+                  from-primary
+                  via-secondary
+                  to-accent
+                  hover:scale-105
+                  transition-all
+                  duration-300
+                  shadow-xl
+                "
+              >
+
+                {/* Shine */}
+                <span
+                  className="
+                    absolute inset-0
+                    bg-white/20
+                    translate-x-full
+                    group-hover:translate-x-full
+                    transition-transform
+                    duration-1000
+                  "
+                ></span>
+
+                <span className="
+                  relative z-10
+                  flex items-center justify-center gap-2
+                ">
+                  Book Session
+
+                  <span className="
+                    group-hover:translate-x-1
+                    transition-transform duration-300
+                  ">
+                    →
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+      </section>
+  
+      <section className="relative py-24 px-5 overflow-hidden bg-base-200 transition-colors duration-500">
+
+        {/* Background Glow */}
+        <div className="absolute inset-0 overflow-hidden">
+
+          <div className="
+            absolute top-10 left-10
+            w-80 h-80
+            bg-primary/20
+            rounded-full
+            blur-3xl
+            animate-pulse
+          "></div>
+
+          <div className="
+            absolute bottom-0 right-0
+            w-96 h-96
+            bg-secondary/20
+            rounded-full
+            blur-3xl
+            animate-pulse
+          "></div>
         </div>
-      </main>
+
+        <div className="relative z-10 max-w-7xl mx-auto">
+
+          {/* Heading */}
+          <div className="text-center mb-16">
+            <h2 className="
+              text-4xl
+              sm:text-5xl
+              font-black
+              text-base-content
+            ">
+              Why Students Choose Us
+            </h2>
+
+            <p className="
+              mt-4
+              text-lg
+              text-base-content/70
+              max-w-2xl
+              mx-auto
+            ">
+              We provide modern interactive learning experiences
+              designed to help students grow faster.
+            </p>
+          </div>
+
+          {/* Features */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            {[
+              {
+                title: "Expert Tutors",
+                desc: "Learn from highly skilled and experienced tutors worldwide.",
+                icon: "🎓",
+              },
+              {
+                title: "Flexible Booking",
+                desc: "Book sessions anytime according to your schedule.",
+                icon: "📅",
+              },
+              {
+                title: "Live Learning",
+                desc: "Interactive online classes with real-time communication.",
+                icon: "💻",
+              },
+              {
+                title: "Affordable Price",
+                desc: "Quality education at student-friendly pricing.",
+                icon: "💰",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="
+                  group
+                  relative
+                  overflow-hidden
+                  rounded-3xl
+                  bg-base-100
+                  border border-base-300
+                  p-8
+                  shadow-2xl
+                  hover:-translate-y-3
+                  hover:border-primary/40
+                  transition-all
+                  duration-500
+                "
+              >
+
+                {/* Glow */}
+                <div className="
+                  absolute inset-0 opacity-0
+                  group-hover:opacity-100
+                  transition duration-500
+                ">
+                  <div className="
+                    absolute -inset-1
+                    bg-linear-to-r
+                    from-primary
+                    via-secondary
+                    to-accent
+                    blur-2xl
+                    opacity-20
+                  "></div>
+                </div>
+
+                <div className="relative z-10">
+
+                  <div className="
+                    text-5xl
+                    mb-6
+                  ">
+                    {item.icon}
+                  </div>
+
+                  <h3 className="
+                    text-2xl
+                    font-black
+                    text-base-content
+                    mb-4
+                  ">
+                    {item.title}
+                  </h3>
+
+                  <p className="
+                    text-base-content/70
+                    leading-relaxed
+                  ">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-24 px-5 overflow-hidden bg-base-200 transition-colors duration-500">
+
+  {/* Background Glow */}
+  <div className="absolute inset-0 overflow-hidden">
+
+    <div className="
+      absolute top-10 left-10
+      w-80 h-80
+      bg-primary/20
+      rounded-full
+      blur-3xl
+      animate-pulse
+    "></div>
+
+    <div className="
+      absolute bottom-0 right-0
+      w-96 h-96
+      bg-secondary/20
+      rounded-full
+      blur-3xl
+      animate-pulse
+    "></div>
+  </div>
+
+  <div className="relative z-10 max-w-7xl mx-auto">
+
+    {/* Heading */}
+    <div className="text-center mb-16">
+      <h2 className="
+        text-4xl
+        sm:text-5xl
+        font-black
+        text-base-content
+      ">
+        What Makes Us Different
+      </h2>
+
+      <p className="
+        mt-4
+        text-lg
+        text-base-content/70
+        max-w-2xl
+        mx-auto
+      ">
+        A smarter learning platform built for consistency, clarity,
+        and real progress in every session.
+      </p>
+    </div>
+
+    {/* Features */}
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      {[
+        {
+          title: "Top Instructors",
+          desc: "Connect with verified educators who guide you step-by-step.",
+          icon: "🏆",
+        },
+        {
+          title: "Easy Scheduling",
+          desc: "Choose your own time and learn without disrupting your routine.",
+          icon: "⏰",
+        },
+        {
+          title: "Real-Time Classes",
+          desc: "Engage in interactive lessons with instant feedback and support.",
+          icon: "🚀",
+        },
+        {
+          title: "Budget Friendly",
+          desc: "High-quality education that stays affordable for everyone.",
+          icon: "💡",
+        },
+      ].map((item, index) => (
+        <div
+          key={index}
+          className="
+            group
+            relative
+            overflow-hidden
+            rounded-3xl
+            bg-base-100
+            border border-base-300
+            p-8
+            shadow-2xl
+            hover:-translate-y-3
+            hover:border-primary/40
+            transition-all
+            duration-500
+          "
+        >
+
+          {/* Glow */}
+          <div className="
+            absolute inset-0 opacity-0
+            group-hover:opacity-100
+            transition duration-500
+          ">
+            <div className="
+              absolute -inset-1
+              bg-linear-to-r
+              from-primary
+              via-secondary
+              to-accent
+              blur-2xl
+              opacity-20
+            "></div>
+          </div>
+
+          <div className="relative z-10">
+
+            <div className="text-5xl mb-6">
+              {item.icon}
+            </div>
+
+            <h3 className="
+              text-2xl
+              font-black
+              text-base-content
+              mb-4
+            ">
+              {item.title}
+            </h3>
+
+            <p className="
+              text-base-content/70
+              leading-relaxed
+            ">
+              {item.desc}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+      </section>
+
     </div>
   );
 }
