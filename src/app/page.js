@@ -62,7 +62,7 @@
 //   );
 // }
 
-
+import Link from "next/link";
 import Image from "next/image";
 import tutors from "@/data/tutors.json";
 
@@ -263,64 +263,56 @@ export default function HomePage() {
         "
       >
 
+        
         {/* Primary Button */}
-        <button
-          className="
-            relative
-            overflow-hidden
-
-            px-8 py-4
-
-            rounded-2xl
-
-            bg-primary
-            text-primary-content
-
-            font-bold
-
-            shadow-2xl
-
-            hover:scale-105
-            transition-all
-            duration-300
-
-            group
-          "
-        >
-
-          {/* Shine */}
-          <span
+        <Link href="/tutors">
+          <button
             className="
-              absolute inset-0
-              bg-white/20
-
-              translate-x-full
-              group-hover:translate-x-full
-
-              transition-transform
-              duration-1000
-            "
-          ></span>
-
-          <span
-            className="
-              relative z-10
-
-              flex items-center gap-2
+              relative
+              overflow-hidden
+              px-8 py-4
+              rounded-2xl
+              bg-primary
+              text-primary-content
+              font-bold
+              shadow-2xl
+              hover:scale-105
+              transition-all
+              duration-300
+              group
             "
           >
-            Explore Tutors
+            {/* Shine */}
+            <span
+              className="
+                absolute inset-0
+                bg-white/20
+                translate-x-full
+                group-hover:translate-x-full
+                transition-transform
+                duration-1000
+              "
+            ></span>
 
             <span
               className="
-                group-hover:translate-x-1
-                transition-transform
+                relative z-10
+                flex items-center gap-2
               "
             >
-              →
+              Explore Tutors
+
+              <span
+                className="
+                  group-hover:translate-x-1
+                  transition-transform
+                "
+              >
+                →
+              </span>
             </span>
-          </span>
-        </button>
+          </button>
+        </Link>
 
         {/* Secondary Button */}
         <button
