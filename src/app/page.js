@@ -544,64 +544,40 @@ export default function HomePage() {
       </div>
 
       {/* Cards */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-
-        {tutors.map((tutor) => (
+      <div
+        className="
+          grid
+          grid-cols-1
+          sm:grid-cols-2
+          xl:grid-cols-3
+          gap-6
+          lg:gap-8
+          max-w-7xl
+          mx-auto
+        "
+      >
+        {tutors.map((tutor, index) => (
           <div
-            key={tutor.id}
+            key={index}
             className="
               group
               relative
+              flex flex-col
+              h-full
               overflow-hidden
               rounded-3xl
-              bg-linear-to-b
-              from-base-200
-              via-base-100
-              to-base-200
+              bg-base-100/90
+              backdrop-blur-xl
               border border-base-300
-              shadow-2xl
-              hover:border-primary/50
+              shadow-xl
+              hover:shadow-primary/20
+              hover:-translate-y-2
               transition-all
               duration-500
-              hover:-translate-y-4
-              hover:scale-[1.02]
-              backdrop-blur-xl
             "
           >
-
-            {/* Animated Glow Border */}
-            <div className="
-              absolute inset-0 opacity-0
-              group-hover:opacity-100
-              transition duration-500
-            ">
-              <div className="
-                absolute -inset-0.5
-                bg-linear-to-r
-                from-primary
-                via-secondary
-                to-accent
-                blur-xl
-                opacity-30
-                animate-pulse
-              "></div>
-            </div>
-
-            {/* Top Shine */}
-            <div className="
-              absolute top-0 left-full
-              w-full h-0.5
-              bg-linear-to-r
-              from-transparent
-              via-white
-              to-transparent
-              group-hover:left-full
-              transition-all
-              duration-1000
-            "></div>
-
             {/* Image */}
-            <figure className="relative h-96 w-full overflow-hidden">
+            <div className="relative h-60 sm:h-64 md:h-72 overflow-hidden">
 
               <Image
                 src={tutor.image}
@@ -612,75 +588,169 @@ export default function HomePage() {
                   transition-transform
                   duration-700
                   group-hover:scale-110
-                  group-hover:rotate-1
                 "
               />
 
               {/* Overlay */}
               <div className="
                 absolute inset-0
-                bg-black/20
-                group-hover:bg-black/40
-                transition duration-500
+                bg-linear-to-t
+                from-black/80
+                via-black/20
+                to-transparent
               "></div>
 
-              {/* Floating Subject Badge */}
+              {/* Subject Badge */}
               <div className="
                 absolute top-4 left-4
                 px-4 py-2
                 rounded-full
-                bg-base-100/70
-                backdrop-blur-md
-                border border-base-300
-                text-base-content
-                font-semibold
-                text-sm
-                shadow-lg
+                bg-primary text-primary-content
+                text-xs sm:text-sm
+                font-bold
               ">
                 {tutor.subject}
               </div>
-            </figure>
 
-            {/* Body */}
-            <div className="card-body relative z-10">
+              {/* Teaching Mode */}
+              <div className="
+                absolute top-4 right-4
+                px-3 py-1
+                rounded-full
+                bg-base-100/80
+                backdrop-blur-md
+                text-xs
+                font-semibold
+                border border-base-300
+              ">
+                {tutor.teachingMode}
+              </div>
 
               {/* Name */}
-              <h2 className="
-                card-title
-                text-2xl
-                font-black
-                text-base-content
-                group-hover:text-primary
-                transition
-              ">
-                {tutor.name}
-              </h2>
-
-              {/* Description */}
-              <p className="text-base-content/70 leading-relaxed">
-                Expert tutor helping students improve skills with
-                modern learning techniques.
-              </p>
-
-              {/* Price */}
-              <div className="flex items-center justify-between mt-3">
-
-                <p className="
-                  text-3xl
+              <div className="absolute bottom-5 left-5">
+                <h2 className="
+                  text-2xl sm:text-3xl
                   font-black
-                  text-primary
+                  text-white
                 ">
-                  {tutor.price}
+                  {tutor.name}
+                </h2>
+
+                <p className="text-white/80 text-sm">
+                  {tutor.institution}
+                </p>
+              </div>
+            </div>
+
+            {/* Body */}
+            <div className="flex flex-col flex-1 p-5 sm:p-6 space-y-5">
+
+              {/* Location + Experience */}
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <p className="text-xs text-base-content/50">
+                    Location
+                  </p>
+
+                  <h4 className="font-bold text-sm sm:text-base">
+                    {tutor.location}
+                  </h4>
+                </div>
+
+                <div className="text-right">
+                  <p className="text-xs text-base-content/50">
+                    Experience
+                  </p>
+
+                  <h4 className="font-bold text-primary">
+                    {tutor.experience}
+                  </h4>
+                </div>
+              </div>
+
+              {/* Available Time */}
+              <div className="
+                rounded-2xl
+                bg-base-200
+                p-4
+                border border-base-300
+              ">
+                <p className="
+                  text-xs
+                  uppercase
+                  tracking-widest
+                  text-base-content/50
+                  mb-1
+                ">
+                  Available Time
                 </p>
 
+                <h3 className="
+                  font-bold
+                  text-sm sm:text-base
+                  leading-relaxed
+                ">
+                  {tutor.availableDays}
+                </h3>
+
+                <p className="text-primary font-semibold mt-1 text-sm">
+                  {tutor.availableTime}
+                </p>
+              </div>
+
+              {/* Session */}
+              <div className="
+                flex items-center justify-between
+                rounded-2xl
+                bg-base-200
+                px-4 py-3
+                border border-base-300
+              ">
+                <div>
+                  <p className="text-xs text-base-content/50">
+                    Session Start
+                  </p>
+
+                  <h4 className="font-bold text-sm">
+                    {tutor.sessionStart}
+                  </h4>
+                </div>
+
+                <div className="text-right">
+                  <p className="text-xs text-base-content/50">
+                    Total Slots
+                  </p>
+
+                  <h4 className="font-black text-secondary text-xl">
+                    {tutor.totalSlot}
+                  </h4>
+                </div>
+              </div>
+
+              {/* Fee */}
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-base-content/50">
+                    Hourly Fee
+                  </p>
+
+                  <h2 className="
+                    text-2xl sm:text-3xl
+                    font-black
+                    text-primary
+                  ">
+                    {tutor.hourlyFee}
+                  </h2>
+                </div>
+
                 <div className="
-                  px-3 py-1
+                  px-4 py-2
                   rounded-full
                   bg-success/20
                   text-success
-                  text-sm
+                  border border-success/30
+                  text-xs sm:text-sm
                   font-bold
-                  border border-success/20
                 ">
                   Available
                 </div>
@@ -689,10 +759,11 @@ export default function HomePage() {
               {/* Button */}
               <button
                 className="
+                  mt-auto
+                  w-full
                   relative
                   overflow-hidden
-                  mt-6
-                  py-3.5
+                  py-3 sm:py-4
                   rounded-2xl
                   font-bold
                   text-primary-content
@@ -700,35 +771,18 @@ export default function HomePage() {
                   from-primary
                   via-secondary
                   to-accent
-                  hover:scale-105
+                  hover:scale-[1.02]
                   transition-all
                   duration-300
                   shadow-xl
                 "
               >
-
-                {/* Shine */}
-                <span
-                  className="
-                    absolute inset-0
-                    bg-white/20
-                    translate-x-full
-                    group-hover:translate-x-full
-                    transition-transform
-                    duration-1000
-                  "
-                ></span>
-
                 <span className="
                   relative z-10
                   flex items-center justify-center gap-2
                 ">
                   Book Session
-
-                  <span className="
-                    group-hover:translate-x-1
-                    transition-transform duration-300
-                  ">
+                  <span className="group-hover:translate-x-1 transition">
                     →
                   </span>
                 </span>
@@ -737,6 +791,7 @@ export default function HomePage() {
           </div>
         ))}
       </div>
+
     </div>
       </section>
   

@@ -1,44 +1,92 @@
 [
   {
     "id": 1,
-    "name": "John Doe",
-    "subject": "Mathematics Expert",
-    "price": "$20/hour",
-    "image": "/images/teacher.jpg"
+    "name": "Ayesha Rahman",
+    "image": "/images/teacher6.jpg",
+    "subject": "Mathematics",
+    "availableDays": "Sun - Thu",
+    "availableTime": "5:00 PM - 8:00 PM",
+    "hourlyFee": "$15/hr",
+    "totalSlot": 6,
+    "sessionStart": "2026-06-01",
+    "institution": "University of Dhaka",
+    "experience": "4 Years Experience",
+    "location": "Dhaka",
+    "teachingMode": "Online"
   },
   {
     "id": 2,
     "name": "Sarah Khan",
-    "subject": "English Tutor",
-    "price": "$18/hour",
-    "image": "/images/teacher2.jpg"
+    "image": "/images/teacher2.jpg",
+    "subject": "English",
+    "availableDays": "Sat - Wed",
+    "availableTime": "4:00 PM - 7:00 PM",
+    "hourlyFee": "$18/hr",
+    "totalSlot": 5,
+    "sessionStart": "2026-06-05",
+    "institution": "North South University",
+    "experience": "3 Years Experience",
+    "location": "Chittagong",
+    "teachingMode": "Online"
   },
   {
     "id": 3,
     "name": "Michael Lee",
-    "subject": "Physics Teacher",
-    "price": "$25/hour",
-    "image": "/images/teacher3.jpg"
+    "image": "/images/teacher3.jpg",
+    "subject": "Physics",
+    "availableDays": "Sun - Tue",
+    "availableTime": "6:00 PM - 9:00 PM",
+    "hourlyFee": "$25/hr",
+    "totalSlot": 4,
+    "sessionStart": "2026-06-10",
+    "institution": "BUET",
+    "experience": "5 Years Experience",
+    "location": "Dhaka",
+    "teachingMode": "Offline"
   },
   {
     "id": 4,
     "name": "Emma Watson",
-    "subject": "Chemistry Tutor",
-    "price": "$22/hour",
-    "image": "/images/teacher4.jpg"
+    "image": "/images/teacher4.jpg",
+    "subject": "Chemistry",
+    "availableDays": "Mon - Thu",
+    "availableTime": "3:00 PM - 6:00 PM",
+    "hourlyFee": "$22/hr",
+    "totalSlot": 6,
+    "sessionStart": "2026-06-12",
+    "institution": "University of Rajshahi",
+    "experience": "4 Years Experience",
+    "location": "Rajshahi",
+    "teachingMode": "Online"
   },
   {
     "id": 5,
     "name": "David Miller",
-    "subject": "Biology Expert",
-    "price": "$19/hour",
-    "image": "/images/teacher5.jpg"
+    "image": "/images/teacher5.jpg",
+    "subject": "Biology",
+    "availableDays": "Fri - Tue",
+    "availableTime": "5:30 PM - 8:30 PM",
+    "hourlyFee": "$19/hr",
+    "totalSlot": 3,
+    "sessionStart": "2026-06-15",
+    "institution": "Dhaka Medical College",
+    "experience": "2 Years Experience",
+    "location": "Khulna",
+    "teachingMode": "Offline"
   },
   {
     "id": 6,
     "name": "Sophia Ahmed",
-    "subject": "Programming Mentor",
-    "price": "$30/hour",
-    "image": "/images/teacher6.jpg"
+    "image": "/images/teacher6.jpg",
+    "subject": "Programming",
+    "availableDays": "Sun - Fri",
+    "availableTime": "7:00 PM - 10:00 PM",
+    "hourlyFee": "$30/hr",
+    "totalSlot": 6,
+    "sessionStart": "2026-06-20",
+    "institution": "BRAC University",
+    "experience": "6 Years Experience",
+    "location": "Sylhet",
+    "teachingMode": "Online"
   }
 ]
