@@ -749,36 +749,35 @@ export default function HomePage() {
               </div>
 
               {/* Button */}
-              <button
-                className="
-                  mt-auto
-                  w-full
-                  relative
-                  overflow-hidden
-                  py-3 sm:py-4
-                  rounded-2xl
-                  font-bold
-                  text-primary-content
-                  bg-linear-to-r
-                  from-primary
-                  via-secondary
-                  to-accent
-                  hover:scale-[1.02]
-                  transition-all
-                  duration-300
-                  shadow-xl
-                "
-              >
-                <span className="
-                  relative z-10
-                  flex items-center justify-center gap-2
-                ">
-                  Book Session
-                  <span className="group-hover:translate-x-1 transition">
-                    →
+              <Link href={`/booking/${tutor._id}`}>
+                <button
+                  className="
+                    mt-auto
+                    w-full
+                    relative
+                    overflow-hidden
+                    py-3 sm:py-4
+                    rounded-2xl
+                    font-bold
+                    text-primary-content
+                    bg-linear-to-r
+                    from-primary
+                    via-secondary
+                    to-accent
+                    hover:scale-[1.02]
+                    transition-all
+                    duration-300
+                    shadow-xl
+                  "
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    Book Session
+                    <span className="group-hover:translate-x-1 transition">
+                      →
+                    </span>
                   </span>
-                </span>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
         ))}

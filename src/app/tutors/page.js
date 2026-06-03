@@ -1,16 +1,37 @@
 "use client";
 
-import Link from "next/link";
 import axios from "axios";
-import { useEffect, useState } from "react";
+
+import {
+  useEffect,
+  useState,
+  useContext,
+} from "react";
+
+import { useRouter }
+  from "next/navigation";
+
+import { AuthContext }
+  from "@/providers/AuthProvider";
 
 const TutorsPage = () => {
 
-  const [tutors, setTutors] = useState([]);
+  const [tutors, setTutors] =
+    useState([]);
 
-  const [search, setSearch] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [search, setSearch] =
+    useState("");
+
+  const [startDate, setStartDate] =
+    useState("");
+
+  const [endDate, setEndDate] =
+    useState("");
+
+  const router = useRouter();
+
+  const { user } =
+    useContext(AuthContext);
 
   // FETCH TUTORS
   const fetchTutors = async () => {
@@ -39,7 +60,9 @@ const TutorsPage = () => {
 
   // INITIAL LOAD
   useEffect(() => {
+
     fetchTutors();
+
   }, []);
 
   // RESET
@@ -60,6 +83,20 @@ const TutorsPage = () => {
     } catch (error) {
 
       console.log(error);
+
+    }
+  };
+
+  // BOOKING HANDLER
+  const handleBooking = (id) => {
+
+    if (user) {
+
+      router.push(`/booking/${id}`);
+
+    } else {
+
+      router.push("/login");
 
     }
   };
@@ -152,25 +189,30 @@ const TutorsPage = () => {
                   {tutor.name}
                 </h2>
 
-                <p>{tutor.subject}</p>
+                <p>
+                  {tutor.subject}
+                </p>
 
                 <p className="text-primary font-semibold">
                   {tutor.hourlyFee}
                 </p>
 
-                <p>{tutor.location}</p>
+                <p>
+                  {tutor.location}
+                </p>
 
-                <p>{tutor.teachingMode}</p>
+                <p>
+                  {tutor.teachingMode}
+                </p>
 
-                <Link
-                  href={`/booking/${tutor._id}`}
+                <button
+                  onClick={() =>
+                    handleBooking(tutor._id)
+                  }
+                  className="btn btn-primary w-full"
                 >
-
-                  <button className="btn btn-primary w-full">
-                    Book Session
-                  </button>
-
-                </Link>
+                  Book Session
+                </button>
 
               </div>
 

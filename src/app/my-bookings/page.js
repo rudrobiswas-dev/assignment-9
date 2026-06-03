@@ -7,10 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 const MyBookingsPage = () => {
   const [bookings, setBookings] = useState([]);
 
-  // temporary user
-  const user = {
-    email: "john@gmail.com",
-  };
+  
 
   useEffect(() => {
     axios

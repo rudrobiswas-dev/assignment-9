@@ -1,39 +1,147 @@
+// // // "use client";
+
+// // // import { useContext } from "react";
+
+// // // import { AuthContext } from "@/providers/AuthProvider";
+
+// // // import { useRouter } from "next/navigation";
+
+// // // import Loading from "@/components/Loading";
+
+// // // const PrivateRoute = ({ children }) => {
+
+// // //   const { user, loading } =
+// // //     useContext(AuthContext);
+
+// // //   const router = useRouter();
+
+// // //   // while checking login
+// // //   if (loading) {
+// // //     return <Loading />;
+// // //   }
+
+// // //   // if not logged in
+// // //   if (!user) {
+
+// // //     router.push("/login");
+
+// // //     return null;
+// // //   }
+
+// // //   // if logged in
+// // //   return children;
+// // // };
+
+// // // export default PrivateRoute;
+
+// // "use client";
+
+// // import {
+// //   useContext,
+// //   useEffect,
+// // } from "react";
+
+// // import { useRouter }
+// //   from "next/navigation";
+
+// // import { AuthContext }
+// //   from "@/providers/AuthProvider";
+
+// // const PrivateRoute =
+// //   ({ children }) => {
+
+// //     const {
+// //       user,
+// //       loading,
+// //     } = useContext(AuthContext);
+
+// //     const router =
+// //       useRouter();
+
+// //     useEffect(() => {
+
+// //       if (
+// //         !loading &&
+// //         !user
+// //       ) {
+
+// //         router.push("/login");
+
+// //       }
+
+// //     }, [user, loading, router]);
+
+// //     if (loading) {
+// //       return <p>Loading...</p>;
+// //     }
+
+// //     if (!user) {
+// //       return null;
+// //     }
+
+// //     return children;
+// //   };
+
+// // export default PrivateRoute;
+
+
 // "use client";
 
-// import { useContext } from "react";
+// import {
+//   useContext,
+//   useEffect,
+// } from "react";
 
-// import { AuthContext } from "@/providers/AuthProvider";
+// import { useRouter }
+//   from "next/navigation";
 
-// import { useRouter } from "next/navigation";
+// import { AuthContext }
+//   from "@/providers/AuthProvider";
 
-// import Loading from "@/components/Loading";
+// const PrivateRoute =
+//   ({ children }) => {
 
-// const PrivateRoute = ({ children }) => {
+//     const {
+//       user,
+//       loading,
+//     } = useContext(AuthContext);
 
-//   const { user, loading } =
-//     useContext(AuthContext);
+//     const router =
+//       useRouter();
 
-//   const router = useRouter();
+//     useEffect(() => {
 
-//   // while checking login
-//   if (loading) {
-//     return <Loading />;
-//   }
+//       if (
+//         !loading &&
+//         !user
+//       ) {
 
-//   // if not logged in
-//   if (!user) {
+//         router.push("/login");
 
-//     router.push("/login");
+//       }
 
-//     return null;
-//   }
+//     }, [user, loading, router]);
 
-//   // if logged in
-//   return children;
-// };
+//     if (loading) {
+
+//       return (
+//         <div className="min-h-screen flex items-center justify-center">
+//           <span className="loading loading-spinner loading-lg"></span>
+//         </div>
+//       );
+
+//     }
+
+//     if (!user) {
+
+//       return null;
+
+//     }
+
+//     return children;
+//   };
 
 // export default PrivateRoute;
-
 "use client";
 
 import {
@@ -41,8 +149,10 @@ import {
   useEffect,
 } from "react";
 
-import { useRouter }
-  from "next/navigation";
+import {
+  useRouter,
+  usePathname,
+} from "next/navigation";
 
 import { AuthContext }
   from "@/providers/AuthProvider";
@@ -58,6 +168,9 @@ const PrivateRoute =
     const router =
       useRouter();
 
+    const pathname =
+      usePathname();
+
     useEffect(() => {
 
       if (
@@ -65,18 +178,33 @@ const PrivateRoute =
         !user
       ) {
 
-        router.push("/login");
+        router.push(
+          `/login?redirect=${pathname}`
+        );
 
       }
 
-    }, [user, loading, router]);
+    }, [
+      user,
+      loading,
+      router,
+      pathname,
+    ]);
 
     if (loading) {
-      return <p>Loading...</p>;
+
+      return (
+        <div className="min-h-screen flex items-center justify-center">
+          <span className="loading loading-spinner loading-lg"></span>
+        </div>
+      );
+
     }
 
     if (!user) {
+
       return null;
+
     }
 
     return children;
