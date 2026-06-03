@@ -17,20 +17,22 @@ const AddTutorPage = () => {
     const form = e.target;
 
     const tutorData = {
-      tutorName: form.name.value,
-      image: form.image.value,
-      subject: form.subject.value,
-      availableDays: form.availableDays.value,
-      availableTime: form.availableTime.value,
-      hourlyFee: parseFloat(form.hourlyFee.value),
-      totalSlot: parseInt(form.totalSlot.value),
-      sessionStartDate: form.sessionStartDate.value,
-      institution: form.institution.value,
-      experience: form.experience.value,
-      location: form.location.value,
-      teachingMode: form.teachingMode.value,
-      createdAt: new Date(),
-    };
+  tutorName: form.name.value,
+  image:
+    form.image.value ||
+    "/images/default-tutor.jpg",
+  subject: form.subject.value,
+  availableDays: form.availableDays.value,
+  availableTime: form.availableTime.value,
+  hourlyFee: parseFloat(form.hourlyFee.value),
+  totalSlot: parseInt(form.totalSlot.value),
+  sessionStartDate: form.sessionStartDate.value,
+  institution: form.institution.value,
+  experience: form.experience.value,
+  location: form.location.value,
+  teachingMode: form.teachingMode.value,
+  createdAt: new Date(),
+};
 
     const loadingToast = toast.loading("Adding tutor...");
 
@@ -91,7 +93,7 @@ const AddTutorPage = () => {
                 name="image"
                 defaultValue={user?.image || ""}
                 className="input input-bordered w-full"
-                required
+                placeholder="https://example.com/photo.jpg"
               />
             </div>
 

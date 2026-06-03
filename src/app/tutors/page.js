@@ -392,7 +392,7 @@ const TutorsPage = () => {
               <div className="relative h-60 sm:h-64 md:h-72 overflow-hidden">
                 <Image
                   src={tutor.image}
-                  alt={tutor.name}
+                  alt={tutor.tutorName || "Tutor"}
                   fill
                   priority
                   className="
@@ -441,7 +441,7 @@ const TutorsPage = () => {
                 {/* Name */}
                 <div className="absolute bottom-5 left-5">
                   <h2 className="text-2xl sm:text-3xl font-black text-white">
-                    {tutor.name}
+                    {tutor.tutorName}
                   </h2>
                   <p className="text-white/80 text-sm">
                     {tutor.institution}
