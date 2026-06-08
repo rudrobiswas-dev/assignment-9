@@ -23,7 +23,7 @@ const TutorsPage = () => {
     try {
       setLoading(true);
 
-      const res = await axios.get("https://assignment-9-backend-omega.vercel.app/tutors", {
+      const res = await axios.get("http://localhost:5000/tutors", {
         params: {
           search: customFilters.search ?? search,
           startDate: customFilters.startDate ?? startDate,
