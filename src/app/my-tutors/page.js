@@ -102,11 +102,10 @@ export default function Page() {
       </div>
     );
   }
-
+  
   return (
     <>
       <Toaster position="top-right" />
-
       <section className="relative min-h-screen overflow-hidden bg-base-100 px-4 sm:px-6 lg:px-10 py-16">
         {/* Background Glow */}
         <div className="absolute inset-0 overflow-hidden">
@@ -122,7 +121,6 @@ export default function Page() {
             </h1>
             <p className="mt-4 text-lg text-base-content/70">Manage all your tutor bookings</p>
           </div>
-
           {/* TABLE */}
           <div className="overflow-x-auto rounded-3xl border border-base-300 bg-base-100/80 backdrop-blur-xl shadow-2xl">
             <table className="table">
@@ -137,7 +135,6 @@ export default function Page() {
                   <th className="text-center">Actions</th>
                 </tr>
               </thead>
-
               <tbody>
                 {bookings.map((booking) => (
                   <tr key={booking._id} className="hover:bg-base-200/50 transition-colors">
@@ -146,7 +143,6 @@ export default function Page() {
                     <td>{booking.subject}</td>
                     <td>{booking.sessionStart}</td>
                     <td>{booking.phone}</td>
-
                     <td>
                       <div className={`inline-flex px-4 py-2 rounded-full text-xs font-bold border ${
                         booking.status === "cancelled"
@@ -156,7 +152,6 @@ export default function Page() {
                         {booking.status}
                       </div>
                     </td>
-
                     <td>
                       <div className="flex gap-3 justify-center">
                         <button
@@ -168,7 +163,6 @@ export default function Page() {
                         >
                           Edit
                         </button>
-
                         <button
                           className="btn btn-sm rounded-xl bg-error text-white"
                           onClick={() => handleDelete(booking._id)}
@@ -183,7 +177,6 @@ export default function Page() {
             </table>
           </div>
         </div>
-
         {/* MODAL */}
         <dialog id="edit_modal" className="modal">
           <div className="modal-box rounded-3xl bg-base-100 border border-base-300 shadow-2xl">
@@ -218,7 +211,6 @@ export default function Page() {
                   })
                 }
               />
-
                 <input
                   className="input input-bordered w-full rounded-2xl"
                   value={selectedBooking.phone}
@@ -229,7 +221,6 @@ export default function Page() {
                 </button>
               </form>
             )}
-
             <div className="modal-action">
               <form method="dialog">
                 <button className="btn rounded-2xl">Close</button>

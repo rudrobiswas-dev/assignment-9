@@ -1,72 +1,98 @@
-// export default function HomePage() {
-//   return (
-//     <div>
-//       {/* Hero */}
-//       <div className="hero min-h-[80vh] bg-base-200">
-//         <div className="hero-content text-center">
-//           <div>
-//             <h1 className="text-5xl font-bold">
-//               Book Expert Tutors Easily
-//             </h1>
+"use client";
 
-//             <p className="py-6 max-w-xl">
-//               Find tutors based on subjects and schedule
-//               online learning sessions smoothly.
-//             </p>
-
-//             <button className="btn btn-primary">
-//               Explore Tutors
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Tutors Section */}
-//       <section className="py-16 px-5">
-//         <h2 className="text-4xl font-bold text-center mb-10">
-//           Available Tutors
-//         </h2>
-
-//         <div className="grid md:grid-cols-3 gap-6">
-//           {[1,2,3,4,5,6].map((item) => (
-//             <div
-//               key={item}
-//               className="card bg-base-100 shadow-xl"
-//             >
-//               <figure>
-//                 <img
-//                   src="https://i.ibb.co.com/x7P24fL/teacher.jpg"
-//                   alt="Tutor"
-//                   className="h-60 w-full object-cover"
-//                 />
-//               </figure>
-
-//               <div className="card-body">
-//                 <h2 className="card-title">
-//                   John Doe
-//                 </h2>
-
-//                 <p>Mathematics Expert</p>
-
-//                 <p>$20/hour</p>
-
-//                 <button className="btn btn-primary">
-//                   Book Session
-//                 </button>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </section>
-//     </div>
-//   );
-// }
+import { useEffect, useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
-import tutors from "@/data/tutors.json";
+
+
+import { useContext } from "react";
+import { useRouter } from "next/navigation";
+import { AuthContext } from "@/providers/AuthProvider";
+
+
+
 
 export default function HomePage() {
+
+  
+  const router = useRouter();
+
+  const { user } = useContext(AuthContext);
+  
+  const [tutors, setTutors] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+
+  const handleBooking = (id) => {
+  if (user) {
+    router.push(`/booking/${id}`);
+  } else {
+    router.push(`/login?redirect=/booking/${id}`);
+  }
+};
+
+  useEffect(() => {
+    fetch("http://localhost:5000/featured-tutors")
+      .then((res) => res.json())
+      .then((data) => {
+        setTutors(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  }, []);
+
+
+
+
+
+  
+
+  if (loading) {
+  return (
+    <div className="min-h-screen bg-base-100 flex items-center justify-center overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+
+        <div className="absolute bottom-20 right-20 w-72 h-72 bg-secondary/20 rounded-full blur-3xl animate-pulse"></div>
+
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 animate-spin [animation-duration:15s]"></div>
+      </div>
+
+      {/* Loader Content */}
+      <div className="relative z-10 flex flex-col items-center">
+
+        {/* Spinner */}
+        <div className="relative w-24 h-24">
+          <div className="absolute inset-0 rounded-full border-4 border-primary/20"></div>
+
+          <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-primary border-r-secondary animate-spin"></div>
+        </div>
+
+        {/* Text */}
+        <h2 className="mt-8 text-3xl font-black bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+          Loading Tutors
+        </h2>
+
+        <p className="mt-2 text-base-content/60">
+          Finding the best tutors for you...
+        </p>
+
+        {/* Dots */}
+        <div className="flex gap-2 mt-6">
+          <span className="w-3 h-3 rounded-full bg-primary animate-bounce"></span>
+          <span className="w-3 h-3 rounded-full bg-secondary animate-bounce [animation-delay:0.15s]"></span>
+          <span className="w-3 h-3 rounded-full bg-accent animate-bounce [animation-delay:0.3s]"></span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
   return (
     <div>
       <section
@@ -548,219 +574,232 @@ export default function HomePage() {
           mx-auto
         "
       >
-        {tutors.map((tutor, index) => (
-          <div
-            key={index}
-            className="
-              group
-              relative
-              flex flex-col
-              h-full
-              overflow-hidden
-              rounded-3xl
-              bg-base-100/90
-              backdrop-blur-xl
-              border border-base-300
-              shadow-xl
-              hover:shadow-primary/20
-              hover:-translate-y-2
-              transition-all
-              duration-500
-            "
-          >
-            {/* Image */}
-            <div className="relative h-60 sm:h-64 md:h-72 overflow-hidden">
-
-              <Image
-                src={tutor.image}
-                alt={tutor.name}
-                fill
-                className="
-                  object-cover
-                  transition-transform
-                  duration-700
-                  group-hover:scale-110
-                "
-              />
-
-              {/* Overlay */}
-              <div className="
-                absolute inset-0
-                bg-linear-to-t
-                from-black/80
-                via-black/20
-                to-transparent
-              "></div>
-
-              {/* Subject Badge */}
-              <div className="
-                absolute top-4 left-4
-                px-4 py-2
-                rounded-full
-                bg-primary text-primary-content
-                text-xs sm:text-sm
-                font-bold
-              ">
-                {tutor.subject}
-              </div>
-
-              {/* Teaching Mode */}
-              <div className="
-                absolute top-4 right-4
-                px-3 py-1
-                rounded-full
-                bg-base-100/80
-                backdrop-blur-md
-                text-xs
-                font-semibold
+        {Array.isArray(tutors) && tutors.length > 0 ? (
+          tutors.map((tutor) => (
+            <div
+              key={tutor._id}
+              className="
+                group
+                relative
+                flex flex-col
+                h-full
+                overflow-hidden
+                rounded-3xl
+                bg-base-100/90
+                backdrop-blur-xl
                 border border-base-300
-              ">
-                {tutor.teachingMode}
-              </div>
+                shadow-xl
+                hover:shadow-primary/20
+                hover:-translate-y-2
+                transition-all
+                duration-500
+              "
+            >
+              {/* Image */}
+              <div className="relative h-60 sm:h-64 md:h-72 overflow-hidden">
+                <Image
+                  src={tutor.image || "/images/default.jpg"}
+                  alt={tutor.tutorName || "Tutor"}
+                  fill
+                  unoptimized
+                  className="
+                    object-cover
+                    transition-transform
+                    duration-700
+                    group-hover:scale-110
+                  "
+                />
 
-              {/* Name */}
-              <div className="absolute bottom-5 left-5">
-                <h2 className="
-                  text-2xl sm:text-3xl
-                  font-black
-                  text-white
-                ">
-                  {tutor.name}
-                </h2>
+                {/* Overlay */}
+                <div
+                  className="
+                    absolute inset-0
+                    bg-gradient-to-t
+                    from-black/80
+                    via-black/20
+                    to-transparent
+                  "
+                ></div>
 
-                <p className="text-white/80 text-sm">
-                  {tutor.institution}
-                </p>
-              </div>
-            </div>
-
-            {/* Body */}
-            <div className="flex flex-col flex-1 p-5 sm:p-6 space-y-5">
-
-              {/* Location + Experience */}
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="text-xs text-base-content/50">
-                    Location
-                  </p>
-
-                  <h4 className="font-bold text-sm sm:text-base">
-                    {tutor.location}
-                  </h4>
+                {/* Subject Badge */}
+                <div
+                  className="
+                    absolute top-4 left-4
+                    px-4 py-2
+                    rounded-full
+                    bg-primary
+                    text-primary-content
+                    text-xs sm:text-sm
+                    font-bold
+                  "
+                >
+                  {tutor.subject}
                 </div>
 
-                <div className="text-right">
-                  <p className="text-xs text-base-content/50">
-                    Experience
-                  </p>
-
-                  <h4 className="font-bold text-primary">
-                    {tutor.experience}
-                  </h4>
-                </div>
-              </div>
-
-              {/* Available Time */}
-              <div className="
-                rounded-2xl
-                bg-base-200
-                p-4
-                border border-base-300
-              ">
-                <p className="
-                  text-xs
-                  uppercase
-                  tracking-widest
-                  text-base-content/50
-                  mb-1
-                ">
-                  Available Time
-                </p>
-
-                <h3 className="
-                  font-bold
-                  text-sm sm:text-base
-                  leading-relaxed
-                ">
-                  {tutor.availableDays}
-                </h3>
-
-                <p className="text-primary font-semibold mt-1 text-sm">
-                  {tutor.availableTime}
-                </p>
-              </div>
-
-              {/* Session */}
-              <div className="
-                flex items-center justify-between
-                rounded-2xl
-                bg-base-200
-                px-4 py-3
-                border border-base-300
-              ">
-                <div>
-                  <p className="text-xs text-base-content/50">
-                    Session Start
-                  </p>
-
-                  <h4 className="font-bold text-sm">
-                    {tutor.sessionStart}
-                  </h4>
+                {/* Teaching Mode */}
+                <div
+                  className="
+                    absolute top-4 right-4
+                    px-3 py-1
+                    rounded-full
+                    bg-base-100/80
+                    backdrop-blur-md
+                    text-xs
+                    font-semibold
+                    border border-base-300
+                  "
+                >
+                  {tutor.teachingMode}
                 </div>
 
-                <div className="text-right">
-                  <p className="text-xs text-base-content/50">
-                    Total Slots
-                  </p>
-
-                  <h4 className="font-black text-secondary text-xl">
-                    {tutor.totalSlot}
-                  </h4>
-                </div>
-              </div>
-
-              {/* Fee */}
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-base-content/50">
-                    Hourly Fee
-                  </p>
-
-                  <h2 className="
-                    text-2xl sm:text-3xl
-                    font-black
-                    text-primary
-                  ">
-                    {tutor.hourlyFee}
+                {/* Name */}
+                <div className="absolute bottom-5 left-5">
+                  <h2
+                    className="
+                      text-2xl sm:text-3xl
+                      font-black
+                      text-white
+                    "
+                  >
+                    {tutor.tutorName}
                   </h2>
-                </div>
 
-                <div className="
-                  px-4 py-2
-                  rounded-full
-                  bg-success/20
-                  text-success
-                  border border-success/30
-                  text-xs sm:text-sm
-                  font-bold
-                ">
-                  Available
+                  <p className="text-white/80 text-sm">
+                    {tutor.institution}
+                  </p>
                 </div>
               </div>
 
-              {/* Button */}
-              <Link href={`/booking/${tutor._id}`}>
+              {/* Body */}
+              <div className="flex flex-col flex-1 p-5 sm:p-6 space-y-5">
+                {/* Location + Experience */}
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <p className="text-xs text-base-content/50">
+                      Location
+                    </p>
+
+                    <h4 className="font-bold text-sm sm:text-base">
+                      {tutor.location}
+                    </h4>
+                  </div>
+
+                  <div className="text-right">
+                    <p className="text-xs text-base-content/50">
+                      Experience
+                    </p>
+
+                    <h4 className="font-bold text-primary">
+                      {tutor.experience}
+                    </h4>
+                  </div>
+                </div>
+
+                {/* Available Time */}
+                <div
+                  className="
+                    rounded-2xl
+                    bg-base-200
+                    p-4
+                    border border-base-300
+                  "
+                >
+                  <p
+                    className="
+                      text-xs
+                      uppercase
+                      tracking-widest
+                      text-base-content/50
+                      mb-1
+                    "
+                  >
+                    Available Time
+                  </p>
+
+                  <h3 className="font-bold text-sm sm:text-base">
+                    {tutor.availableDays}
+                  </h3>
+
+                  <p className="text-primary font-semibold mt-1 text-sm">
+                    {tutor.availableTime}
+                  </p>
+                </div>
+
+                {/* Session */}
+                <div
+                  className="
+                    flex items-center justify-between
+                    rounded-2xl
+                    bg-base-200
+                    px-4 py-3
+                    border border-base-300
+                  "
+                >
+                  <div>
+                    <p className="text-xs text-base-content/50">
+                      Session Start
+                    </p>
+
+                    <h4 className="font-bold text-sm">
+                      {tutor.sessionStart}
+                    </h4>
+                  </div>
+
+                  <div className="text-right">
+                    <p className="text-xs text-base-content/50">
+                      Total Slots
+                    </p>
+
+                    <h4 className="font-black text-secondary text-xl">
+                      {tutor.totalSlot}
+                    </h4>
+                  </div>
+                </div>
+
+                {/* Fee */}
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-base-content/50">
+                      Hourly Fee
+                    </p>
+
+                    <h2
+                      className="
+                        text-2xl sm:text-3xl
+                        font-black
+                        text-primary
+                      "
+                    >
+                      {tutor.hourlyFee}
+                    </h2>
+                  </div>
+
+                  <div
+                    className="
+                      px-4 py-2
+                      rounded-full
+                      bg-success/20
+                      text-success
+                      border border-success/30
+                      text-xs sm:text-sm
+                      font-bold
+                    "
+                  >
+                    Available
+                  </div>
+                </div>
+
+                {/* Button */}
                 <button
+                  onClick={() => handleBooking(tutor._id)}
                   className="
                     mt-auto
                     w-full
-                    relative
-                    overflow-hidden
                     py-3 sm:py-4
                     rounded-2xl
                     font-bold
                     text-primary-content
-                    bg-linear-to-r
+                    bg-gradient-to-r
                     from-primary
                     via-secondary
                     to-accent
@@ -770,17 +809,18 @@ export default function HomePage() {
                     shadow-xl
                   "
                 >
-                  <span className="relative z-10 flex items-center justify-center gap-2">
-                    Book Session
-                    <span className="group-hover:translate-x-1 transition">
-                      →
-                    </span>
-                  </span>
+                  Book Session →
                 </button>
-              </Link>
+              </div>
             </div>
+          ))
+        ) : (
+          <div className="col-span-full text-center py-10">
+            <h2 className="text-2xl font-bold">
+              No Tutors Available
+            </h2>
           </div>
-        ))}
+        )}
       </div>
 
 
