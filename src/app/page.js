@@ -33,7 +33,7 @@ export default function HomePage() {
 };
 
   useEffect(() => {
-    fetch("http://localhost:5000/featured-tutors")
+    fetch("https://assignment-9-backend-omega.vercel.app/tutors/featured-tutors")
       .then((res) => res.json())
       .then((data) => {
         setTutors(data);
