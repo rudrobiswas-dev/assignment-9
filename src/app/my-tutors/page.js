@@ -22,7 +22,7 @@ export default function Page() {
   const fetchBookings = async () => {
     try {
       const res = await axios.get(
-        `https://assignment-9-backend-omega.vercel.app//my-bookings?email=${user.email}` // ✅ real email
+        `https://assignment-9-backend-omega.vercel.app/my-bookings?email=${user.email}` // ✅ real email
       );
       setBookings(res.data);
     } catch (error) {
