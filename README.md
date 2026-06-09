@@ -15,7 +15,6 @@ Frontend: https://assignment-9-lime.vercel.app
 *DaisyUI
 *Axios
 *React Hot Toast
-*Firebase Authentication
 
 ***Deployment
 **Vercel (Frontend)
