@@ -112,6 +112,7 @@ const BookingPage = () => {
       tutorId: tutor._id,
       tutorName: tutor.tutorName,
       subject: tutor.subject,
+       sessionStart: tutor.sessionStart,
       fee: tutor.hourlyFee,
       status: "booked",
       bookedAt: new Date(),

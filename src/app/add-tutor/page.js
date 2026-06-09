@@ -183,7 +183,7 @@ const AddTutorPage = () => {
               <label className="label">Session Start Date</label>
               <input
                 type="date"
-                name="sessionStartDate"
+                name="sessionStart"
                 className="input input-bordered w-full"
                 required
               />
