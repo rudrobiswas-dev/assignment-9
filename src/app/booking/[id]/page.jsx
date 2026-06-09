@@ -20,7 +20,7 @@ const BookingPage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/tutors/${params.id}`)
+      .get(`https://assignment-9-backend-omega.vercel.app/tutors/${params.id}`)
       .then((res) => {
         setTutor(res.data);
         setLoading(false);
