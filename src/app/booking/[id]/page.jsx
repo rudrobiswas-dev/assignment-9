@@ -76,7 +76,7 @@ const BookingPage = () => {
 
     try {
       setBookingLoading(true);
-      const res = await axios.post("http://localhost:5000/bookings", bookingData);
+      const res = await axios.post("https://assignment-9-backend-omega.vercel.app/bookings", bookingData);
       console.log(res.data);
       setMessage("Session booked successfully!");
       setPhone("");

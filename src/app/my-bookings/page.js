@@ -175,7 +175,7 @@ const MyBookingsPage = () => {
     setLoading(true);
 
     axios
-      .get(`http://localhost:5000/my-bookings?email=${user.email}`)
+      .get(`https://assignment-9-backend-omega.vercel.app/my-bookings?email=${user.email}`)
       .then((res) => {
         setBookings(res.data);
       })
@@ -193,7 +193,7 @@ const MyBookingsPage = () => {
     if (!confirmCancel) return;
 
     try {
-      await axios.patch(`http://localhost:5000/bookings/${id}`, {
+      await axios.patch(`https://assignment-9-backend-omega.vercel.app/bookings/${id}`, {
         status: "cancelled",
       });
 
