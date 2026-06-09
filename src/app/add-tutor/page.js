@@ -20,13 +20,13 @@ const AddTutorPage = () => {
   tutorName: form.name.value,
   image:
     form.image.value ||
-    "/images/default-tutor.jpg",
+    "/images/teacher6.jpg",
   subject: form.subject.value,
   availableDays: form.availableDays.value,
   availableTime: form.availableTime.value,
   hourlyFee: parseFloat(form.hourlyFee.value),
   totalSlot: parseInt(form.totalSlot.value),
-  sessionStartDate: form.sessionStartDate.value,
+  sessionStart: form.sessionStart.value,
   institution: form.institution.value,
   experience: form.experience.value,
   location: form.location.value,
