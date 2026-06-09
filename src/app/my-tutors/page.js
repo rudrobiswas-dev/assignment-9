@@ -7,7 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "@/providers/AuthProvider";
 
 export default function Page() {
-  const { user } = useContext(AuthContext); // ✅ real Firebase user
+  const { user } = useContext(AuthContext); 
 
   const [bookings, setBookings] = useState([]);
   const [selectedBooking, setSelectedBooking] = useState(null);
@@ -15,9 +15,9 @@ export default function Page() {
 
   // load bookings
   useEffect(() => {
-    if (!user?.email) return; // ✅ wait for user to load
+    if (!user?.email) return; 
     fetchBookings();
-  }, [user]); // ✅ re-run when user changes
+  }, [user]); 
 
   const fetchBookings = async () => {
     try {

@@ -46,12 +46,6 @@ export default function HomePage() {
       });
   }, []);
 
-
-
-
-
-  
-
   if (loading) {
   return (
     <div className="min-h-screen bg-base-100 flex items-center justify-center overflow-hidden">

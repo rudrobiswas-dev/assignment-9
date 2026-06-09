@@ -105,7 +105,7 @@ export default function LoginPage() {
 
         const res =
           await axios.post(
-            "http://localhost:5000/jwt",
+            "https://assignment-9-lime.vercel.app/jwt",
             user
           );
 
@@ -144,7 +144,7 @@ export default function LoginPage() {
       "
     >
 
-      <Toaster position="top-center" />
+      <Toaster position="top-right" />
 
       {/* BACKGROUND */}
       <div className="absolute inset-0 overflow-hidden">

@@ -18,7 +18,7 @@ const TutorsPage = () => {
   const router = useRouter();
   const { user } = useContext(AuthContext);
 
-  // FIXED: always use latest filters
+  
   const fetchTutors = async (customFilters = {}) => {
     try {
       setLoading(true);

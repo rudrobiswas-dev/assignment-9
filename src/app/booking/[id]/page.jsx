@@ -1,6 +1,3 @@
-
-
-
 "use client";
 
 import axios from "axios";
@@ -10,7 +7,7 @@ import { AuthContext } from "@/providers/AuthProvider";
 
 const BookingPage = () => {
   const params = useParams();
-  const { user } = useContext(AuthContext); // ✅ real Firebase user
+  const { user } = useContext(AuthContext); 
 
   const [tutor, setTutor] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -31,21 +28,67 @@ const BookingPage = () => {
       });
   }, [params.id]);
 
-  // loading state
   if (loading) {
-    return (
-      <div className="text-center py-20 text-2xl">Loading...</div>
-    );
-  }
+  return (
+    <div className="min-h-screen flex items-center justify-center overflow-hidden bg-base-100">
+      <div className="relative text-center">
+        <div className="absolute inset-0 blur-3xl bg-primary/20 rounded-full animate-pulse"></div>
+
+        <span className="loading loading-ring loading-lg text-primary"></span>
+
+        <h2 className="mt-6 text-4xl font-black bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+          Loading...
+        </h2>
+
+        <p className="text-base-content/60 mt-2">
+          Preparing your tutor session
+        </p>
+      </div>
+    </div>
+  );
+}
 
   // tutor not found
   if (!tutor) {
-    return (
-      <div className="text-center py-20 text-3xl text-red-500">
-        Tutor Not Found
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-base-100 px-4">
+      <div
+        className="
+          max-w-lg w-full
+          rounded-3xl
+          border border-base-300
+          bg-base-100/70
+          backdrop-blur-xl
+          shadow-2xl
+          p-10
+          text-center
+        "
+      >
+        <div className="text-7xl mb-4">😕</div>
+
+        <h1 className="text-4xl font-black text-error">
+          Tutor Not Found
+        </h1>
+
+        <p className="mt-4 text-base-content/70">
+          The tutor you are looking for may have been removed
+          or the link is invalid.
+        </p>
+
+        <button
+          onClick={() => window.history.back()}
+          className="
+            btn btn-primary
+            mt-8
+            rounded-2xl
+          "
+        >
+          Go Back
+        </button>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
   // slot check
   const noSlot = tutor.totalSlot <= 0;
@@ -63,8 +106,8 @@ const BookingPage = () => {
     if (sessionBlocked) return setMessage(`Booking will open on ${tutor.sessionStart}`);
 
     const bookingData = {
-      studentName: user.displayName,  // ✅ real name
-      studentEmail: user.email,       // ✅ real email
+      studentName: user.displayName,  
+      studentEmail: user.email,       
       phone,
       tutorId: tutor._id,
       tutorName: tutor.tutorName,
@@ -130,7 +173,7 @@ const BookingPage = () => {
                 <label className="label">Student Name</label>
                 <input
                   type="text"
-                  value={user?.displayName || ""}  // ✅ real name
+                  value={user?.displayName || ""}  
                   readOnly
                   className="input input-bordered w-full"
                 />

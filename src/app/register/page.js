@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
-import { updateProfile } from "firebase/auth"; // ✅ new import
+import { updateProfile } from "firebase/auth"; 
 import { AuthContext } from "@/providers/AuthProvider";
 
 export default function RegisterPage() {
@@ -45,9 +45,9 @@ export default function RegisterPage() {
     }
 
     try {
-      const result = await createUser(email, password); // ✅ capture result
+      const result = await createUser(email, password); 
 
-      // ✅ update Firebase profile with name and photo
+      
       await updateProfile(result.user, {
         displayName: name,
         photoURL: photo || "",
@@ -76,7 +76,7 @@ export default function RegisterPage() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-base-100 px-5 py-20">
-      <Toaster position="top-center" />
+      <Toaster position="top-right" />
 
       {/* BACKGROUND */}
       <div className="absolute inset-0 overflow-hidden">

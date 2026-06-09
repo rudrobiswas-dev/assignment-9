@@ -99,7 +99,7 @@ const Navbar = () => {
       "
     >
 
-      <Toaster position="top-center" />
+      <Toaster position="top-right" />
 
       <div className="navbar max-w-7xl mx-auto px-4">
 
