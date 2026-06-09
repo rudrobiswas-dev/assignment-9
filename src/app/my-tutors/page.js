@@ -22,7 +22,7 @@ export default function Page() {
   const fetchBookings = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/my-bookings?email=${user.email}` // ✅ real email
+        `https://assignment-9-backend-omega.vercel.app//my-bookings?email=${user.email}` // ✅ real email
       );
       setBookings(res.data);
     } catch (error) {
@@ -39,7 +39,7 @@ export default function Page() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:5000/bookings/${id}`);
+      await axios.delete(`https://assignment-9-backend-omega.vercel.app/bookings/${id}`);
       setBookings(bookings.filter((booking) => booking._id !== id));
       toast.success("Booking deleted successfully");
     } catch (error) {
@@ -54,7 +54,7 @@ export default function Page() {
 
   try {
     await axios.patch(
-      `http://localhost:5000/bookings/update/${selectedBooking._id}`,
+      `https://assignment-9-backend-omega.vercel.app/bookings/update/${selectedBooking._id}`,
       {
         phone: selectedBooking.phone,
         tutorName: selectedBooking.tutorName,

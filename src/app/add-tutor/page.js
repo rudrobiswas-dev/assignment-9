@@ -38,7 +38,7 @@ const AddTutorPage = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/tutors",
+        "https://assignment-9-backend-omega.vercel.app/tutors",
         tutorData
       );
 

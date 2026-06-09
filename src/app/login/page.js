@@ -61,7 +61,7 @@ export default function LoginPage() {
 
         const res =
           await axios.post(
-            "http://localhost:5000/jwt",
+            "https://assignment-9-backend-omega.vercel.app/jwt",
             user
           );
 
